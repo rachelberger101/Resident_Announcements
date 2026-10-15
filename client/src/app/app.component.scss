@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #1d2433;
+}
+
+.page-shell {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.page-shell__content {
+  width: min(100%, 760px);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.page-shell__heading {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  color: #111827;
+  text-align: right;
+}
