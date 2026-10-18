@@ -1,6 +1,10 @@
 ﻿<main class="page-shell" dir="rtl">
   <section class="page-shell__content">
     <h1 class="page-shell__heading">{{ title }}</h1>
-    <app-resident-announcements [announcements]="announcements"></app-resident-announcements>
+    @if (errorMessage) {
+      <p role="alert">{{ errorMessage }}</p>
+    } @else {
+      <app-resident-announcements [announcements]="announcements"></app-resident-announcements>
+    }
   </section>
 </main>

@@ -1,12 +1,20 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Announcement {
-  id?: number;
-  title?: string;
-  message?: string;
-  urgent?: boolean;
+  id: string;
+  title: string;
+  summary: string;
+  categoryName: string;
+  isUrgent: boolean;
+  publishDate: string;
+}
+
+export interface AnnouncementsResponse {
+  authorityCode: string;
+  authorityName: string;
+  announcements: Announcement[];
 }
 
 @Injectable({
@@ -17,7 +25,7 @@ export class AnnouncementsService {
 
   constructor(private http: HttpClient) {}
 
-  getAnnouncements(residentId: number): Observable<Announcement[]> {
-    return this.http.get<Announcement[]>(`${this.apiUrl}/${residentId}`);
+  getAnnouncements(authorityCode: string): Observable<AnnouncementsResponse> {
+    return this.http.get<AnnouncementsResponse>(`${this.apiUrl}/${encodeURIComponent(authorityCode)}`);
   }
 }

@@ -8,6 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configure logging first
 builder.AddApplicationLogging();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("LocalAngular", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 // Add services to the container
 builder.Services.AddControllers();
@@ -34,6 +44,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("LocalAngular");
 
 app.UseAuthorization();
 

@@ -14,7 +14,7 @@ export class ResidentAnnouncementsComponent {
   @Input() title = 'הודעות לתושב';
   @Input() announcements: Announcement[] = [];
 
-  trackByAnnouncement(index: number, announcement: Announcement): number {
-    return announcement.id ?? index;
-  }
+  // trackByAnnouncement(index: number, announcement: Announcement): string {
+  //   return announcement.id ?? index;
+  // }
 }

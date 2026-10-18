@@ -1,18 +1,18 @@
-<section class="resident-announcements" dir="rtl" aria-labelledby="resident-announcements-title" aria-live="polite">
+﻿<section class="resident-announcements" dir="rtl" aria-labelledby="resident-announcements-title" aria-live="polite">
   <header class="resident-announcements__header">
     <h2 id="resident-announcements-title" class="resident-announcements__title">{{ title }}</h2>
   </header>
 
   @if (announcements?.length) {
     <ul class="announcement-list" role="list" aria-label="רשימת הודעות לתושב">
-      @for (announcement of announcements; track trackByAnnouncement($index, announcement)) {
+      @for (announcement of announcements; track $index) {
         <li
           class="announcement-card"
-          [class.announcement-card--urgent]="announcement.urgent"
-          [attr.aria-label]="announcement.urgent ? 'הודעה דחופה' : 'הודעה'"
+          [class.announcement-card--urgent]="announcement.isUrgent"
+          [attr.aria-label]="announcement.isUrgent ? 'הודעה דחופה' : 'הודעה'"
           tabindex="0"
         >
-          @if (announcement.urgent) {
+          @if (announcement.isUrgent) {
             <div class="announcement-card__badge" role="status" aria-label="הודעה דחופה">
               דחופה
             </div>
@@ -20,7 +20,7 @@
 
           <div class="announcement-card__content">
             <h3 class="announcement-card__title">{{ announcement.title || 'הודעה' }}</h3>
-            <p class="announcement-card__message">{{ announcement.message }}</p>
+            <p class="announcement-card__message">{{ announcement.summary }}</p>
           </div>
         </li>
       }
