@@ -1,7 +1,8 @@
 using RA_MuniAnnouncements.Application.Interfaces;
 using RA_MuniAnnouncements.Application.Services;
-using RA_MuniAnnouncements.Infrastructure.Repositories;
+
 using RA_MuniAnnouncements.Api.Extensions;
+using RA_MuniAnnouncements.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

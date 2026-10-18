@@ -1,5 +1,6 @@
-using System.Threading.Tasks;
 using RA_MuniAnnouncements.Core.Models;
+using System.Threading.Tasks;
+
 
 namespace RA_MuniAnnouncements.Application.Interfaces
 {

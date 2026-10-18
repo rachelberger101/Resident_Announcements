@@ -1,11 +1,12 @@
 using RA_MuniAnnouncements.Application.Interfaces;
 using RA_MuniAnnouncements.Core.Models;
-using RA_MuniAnnouncements.Infrastructure.Repositories;
+
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using RA_MuniAnnouncements.Infrastructure.Repositories;
 
 namespace RA_MuniAnnouncements.Application.Services
 {
@@ -83,7 +84,7 @@ namespace RA_MuniAnnouncements.Application.Services
             };
         }
 
-        
+
         private static string StripHtml(string html)
         {
             if (string.IsNullOrWhiteSpace(html))

@@ -17,12 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RA_MuniAnnouncements.Core\RA_MuniAnnouncements.Core.csproj" />
-    <ProjectReference Include="..\RA_MuniAnnouncements.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj" />
-    <ProjectReference Include="..\RA_MuniAnnouncements.Service\RA_MuniAnnouncements.Service.csproj" />
-    <ProjectReference Include="..\ResidentAnnouncements.Core\RA_MuniAnnouncements.Core.csproj" />
-    <ProjectReference Include="..\ResidentAnnouncements.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj" />
-    <ProjectReference Include="..\ResidentAnnouncements.Service\RA_MuniAnnouncements.Service.csproj" />
+    <ProjectReference Include="..\Ra_MuniAnnouncment.Core\RA_MuniAnnouncements.Core.csproj" />
+    <ProjectReference Include="..\Ra_MuniAnnouncment.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj" />
+    <ProjectReference Include="..\Ra_MuniAnnouncment.Service\RA_MuniAnnouncements.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

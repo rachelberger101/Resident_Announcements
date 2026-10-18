@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ResidentAnnouncements.Service\RA_MuniAnnouncements.Service.csproj" />
+    <ProjectReference Include="..\Ra_MuniAnnouncment.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj" />
+    <ProjectReference Include="..\Ra_MuniAnnouncment.Service\RA_MuniAnnouncements.Service.csproj" />
   </ItemGroup>
 
 </Project>

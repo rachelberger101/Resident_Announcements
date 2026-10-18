@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ResidentAnnouncements.Core\RA_MuniAnnouncements.Core.csproj" />
-    <ProjectReference Include="..\ResidentAnnouncements.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj" />
+    <ProjectReference Include="..\Ra_MuniAnnouncment.Core\RA_MuniAnnouncements.Core.csproj" />
+    <ProjectReference Include="..\Ra_MuniAnnouncment.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -27,7 +27,7 @@ namespace RA_MuniAnnouncements.Api.Controllers
 
             // Call service - let it handle business logic
             var result = await _service.GetNormalizedAnnouncementsAsync(authorityCode);
-            
+
             // If no settings for this authority, return 404 per business contract
             if (result == null)
             {
