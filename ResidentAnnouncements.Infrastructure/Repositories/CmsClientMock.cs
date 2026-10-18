@@ -1,15 +1,19 @@
-using ResidentAnnouncements.Core.Models;
+using RA_MuniAnnouncements.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ResidentAnnouncements.Infrastructure.Repositories
+namespace RA_MuniAnnouncements.Infrastructure.Repositories
 {
-    // Simulate CMS data (hard-coded)
+    /// <summary>
+    /// Mock implementation of ICmsClient for testing/demo purposes.
+    /// Simulates CMS data retrieval with hardcoded announcements.
+    /// </summary>
     public class CmsClientMock : ICmsClient
     {
         public Task<List<AnnouncementFromCms>> GetAnnouncementsAsync(string authorityCode)
         {
+            // In-memory hardcoded data
             var list = new List<AnnouncementFromCms>
             {
                 new AnnouncementFromCms
@@ -47,7 +51,7 @@ namespace ResidentAnnouncements.Infrastructure.Repositories
                 }
             };
 
-            // return only those matching authorityCode for demo
+            // Filter announcements for the given authority code
             var result = list.FindAll(x => x.AuthorityCode == authorityCode);
             return Task.FromResult(result);
         }

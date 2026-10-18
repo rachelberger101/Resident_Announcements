@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using ResidentAnnouncements.Application.Interfaces;
+using RA_MuniAnnouncements.Application.Interfaces;
 using System.Threading.Tasks;
 
-namespace ResidentAnnouncements.Api.Controllers
+namespace RA_MuniAnnouncements.Api.Controllers
 {
     [ApiController]
     [Route("api/announcements/{authorityCode}")]
@@ -19,7 +19,16 @@ namespace ResidentAnnouncements.Api.Controllers
         [Produces("application/json")]
         public async Task<IActionResult> Get(string authorityCode)
         {
+            // Validation: empty authority code
+            if (string.IsNullOrWhiteSpace(authorityCode))
+            {
+                return BadRequest(new { message = "Authority code cannot be null or empty." });
+            }
+
+            // Call service - let it handle business logic
             var result = await _service.GetNormalizedAnnouncementsAsync(authorityCode);
+            
+            // If no settings for this authority, return 404 per business contract
             if (result == null)
             {
                 return NotFound(new { message = $"Settings for authority '{authorityCode}' not found." });

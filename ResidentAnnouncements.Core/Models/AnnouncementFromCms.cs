@@ -1,6 +1,6 @@
 using System;
 
-namespace ResidentAnnouncements.Core.Models
+namespace RA_MuniAnnouncements.Core.Models
 {
     public class AnnouncementFromCms
     {

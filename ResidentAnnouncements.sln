@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37314.3 d17.14
+VisualStudioVersion = 17.14.37314.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResidentAnnouncements", "ResidentAnnouncements\ResidentAnnouncements.csproj", "{ADA0D029-522E-49B1-958A-6F2196F1BE8A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA_MuniAnnouncements", "ResidentAnnouncements\RA_MuniAnnouncements.csproj", "{ADA0D029-522E-49B1-958A-6F2196F1BE8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResidentAnnouncements.Service", "ResidentAnnouncements.Service\ResidentAnnouncements.Service.csproj", "{50659CC9-F523-4E09-8770-E64645F5FC3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA_MuniAnnouncements.Service", "ResidentAnnouncements.Service\RA_MuniAnnouncements.Service.csproj", "{50659CC9-F523-4E09-8770-E64645F5FC3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResidentAnnouncements.Core", "ResidentAnnouncements.Core\ResidentAnnouncements.Core.csproj", "{FA7BBE29-4FCC-4EE2-8858-34D71911A17B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA_MuniAnnouncements.Core", "ResidentAnnouncements.Core\RA_MuniAnnouncements.Core.csproj", "{FA7BBE29-4FCC-4EE2-8858-34D71911A17B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResidentAnnouncements.Infrastructure", "ResidentAnnouncements.Infrastructure\ResidentAnnouncements.Infrastructure.csproj", "{8D559DD3-CFC7-492A-8322-90677878E980}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RA_MuniAnnouncements.Infrastructure", "ResidentAnnouncements.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj", "{8D559DD3-CFC7-492A-8322-90677878E980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra_MuniAnnouncment.test", "Ra_MuniAnnouncment.test\Ra_MuniAnnouncment.test.csproj", "{6A008DBE-5253-49CB-B77F-D21BFA09D7D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8D559DD3-CFC7-492A-8322-90677878E980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D559DD3-CFC7-492A-8322-90677878E980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D559DD3-CFC7-492A-8322-90677878E980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A008DBE-5253-49CB-B77F-D21BFA09D7D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A008DBE-5253-49CB-B77F-D21BFA09D7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A008DBE-5253-49CB-B77F-D21BFA09D7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A008DBE-5253-49CB-B77F-D21BFA09D7D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

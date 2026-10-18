@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ResidentAnnouncements.Service\ResidentAnnouncements.Service.csproj" />
+    <ProjectReference Include="..\ResidentAnnouncements.Service\RA_MuniAnnouncements.Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ResidentAnnouncements.Core\ResidentAnnouncements.Core.csproj" />
+    <ProjectReference Include="..\ResidentAnnouncements.Core\RA_MuniAnnouncements.Core.csproj" />
   </ItemGroup>
 
 </Project>

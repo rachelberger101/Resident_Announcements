@@ -1,10 +1,13 @@
-using ResidentAnnouncements.Core.Models;
+using RA_MuniAnnouncements.Core.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ResidentAnnouncements.Infrastructure.Repositories
+namespace RA_MuniAnnouncements.Infrastructure.Repositories
 {
-    // Simulate MongoDB AuthoritySiteSettings collection
+    /// <summary>
+    /// Mock implementation of ISettingsRepository for testing/demo purposes.
+    /// Returns in-memory simulated settings data.
+    /// </summary>
     public class SettingsRepositoryMock : ISettingsRepository
     {
         private static readonly List<AuthoritySiteSettings> _store = new()
@@ -27,8 +30,10 @@ namespace ResidentAnnouncements.Infrastructure.Repositories
 
         public Task<AuthoritySiteSettings?> GetAuthoritySettingsAsync(string authorityCode)
         {
-            var s = _store.Find(x => x.AuthorityCode == authorityCode);
-            return Task.FromResult(s);
+            // In-memory lookup - no exceptions can occur here
+            // Returns null if not found (business logic)
+            var settings = _store.Find(x => x.AuthorityCode == authorityCode);
+            return Task.FromResult(settings);
         }
     }
 }

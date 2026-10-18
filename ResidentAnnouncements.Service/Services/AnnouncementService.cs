@@ -1,13 +1,13 @@
-using ResidentAnnouncements.Application.Interfaces;
-using ResidentAnnouncements.Core.Models;
-using ResidentAnnouncements.Infrastructure.Repositories;
+using RA_MuniAnnouncements.Application.Interfaces;
+using RA_MuniAnnouncements.Core.Models;
+using RA_MuniAnnouncements.Infrastructure.Repositories;
 using System;
 using System.Globalization;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 
-namespace ResidentAnnouncements.Application.Services
+namespace RA_MuniAnnouncements.Application.Services
 {
     public class AnnouncementService : IAnnouncementService
     {
@@ -22,30 +22,44 @@ namespace ResidentAnnouncements.Application.Services
 
         public async Task<NormalizedAnnouncementResponse?> GetNormalizedAnnouncementsAsync(string authorityCode)
         {
-            // fetch settings
+            // Fetch settings from repository
+            // If not found, return null (business logic decision)
             var settings = await _settingsRepository.GetAuthoritySettingsAsync(authorityCode);
-            if (settings == null) return null;
+            if (settings == null)
+            {
+                return null;
+            }
 
-            // fetch raw announcements from CMS
+            // Fetch raw announcements from CMS
+            // If unavailable, return empty list or let exception propagate to middleware
             var raw = await _cmsClient.GetAnnouncementsAsync(authorityCode);
+            if (raw == null)
+            {
+                raw = new List<AnnouncementFromCms>();
+            }
 
             var now = DateTime.UtcNow;
 
-            // filter published & active, and enabled categories
+            // Filter: published & active, and enabled categories
             var filtered = raw
                 .Where(a => string.Equals(a.Status, "Published", StringComparison.OrdinalIgnoreCase))
                 .Where(a => a.PublishDate <= now && a.ExpiryDate > now)
                 .Where(a => settings.EnabledCategories.Contains(a.Category))
                 .ToList();
 
-            // normalize
+            // Normalize announcements
             var normalized = filtered
                 .Select(a =>
                 {
-                    var categoryName = settings.CategoryDisplayNames.TryGetValue(a.Category, out var display) ? display : a.Category;
+                    var categoryName = settings.CategoryDisplayNames.TryGetValue(a.Category, out var display) 
+                        ? display 
+                        : a.Category;
                     var isUrgent = settings.UrgentCategories.Contains(a.Category);
                     var summary = StripHtml(a.Body);
-                    if (summary.Length > 150) summary = summary[..150].TrimEnd() + "...";
+                    if (summary.Length > 150)
+                    {
+                        summary = summary[..150].TrimEnd() + "...";
+                    }
                     return new NormalizedAnnouncementItem
                     {
                         Id = a.Id,
@@ -56,7 +70,7 @@ namespace ResidentAnnouncements.Application.Services
                         PublishDate = a.PublishDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)
                     };
                 })
-                .OrderByDescending(a => a.IsUrgent) // urgent first (true > false)
+                .OrderByDescending(a => a.IsUrgent) // Urgent first (true > false)
                 .ThenByDescending(a => DateTime.ParseExact(a.PublishDate, "dd/MM/yyyy", CultureInfo.InvariantCulture))
                 .Take(settings.MaxItems)
                 .ToList();
@@ -69,12 +83,22 @@ namespace ResidentAnnouncements.Application.Services
             };
         }
 
+        
         private static string StripHtml(string html)
         {
-            if (string.IsNullOrWhiteSpace(html)) return string.Empty;
-            var noTags = Regex.Replace(html, "<.*?>", string.Empty);
-            var decoded = System.Net.WebUtility.HtmlDecode(noTags);
-            return decoded.Trim().Replace("\n", " ").Replace("\r", " ").Replace("\t", " ");
+            if (string.IsNullOrWhiteSpace(html))
+            {
+                return string.Empty;
+            }
+
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
+            var text = doc.DocumentNode.InnerText;
+            var decoded = System.Net.WebUtility.HtmlDecode(text);
+            return decoded.Trim()
+                .Replace("\n", " ")
+                .Replace("\r", " ")
+                .Replace("\t", " ");
         }
     }
 }

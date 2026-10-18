@@ -3,28 +3,29 @@
     <h2 id="resident-announcements-title" class="resident-announcements__title">{{ title }}</h2>
   </header>
 
-  <ng-container *ngIf="announcements?.length; else emptyState">
+  @if (announcements?.length) {
     <ul class="announcement-list" role="list" aria-label="רשימת הודעות לתושב">
-      <li
-        *ngFor="let announcement of announcements; trackBy: trackByAnnouncement"
-        class="announcement-card"
-        [class.announcement-card--urgent]="announcement.urgent"
-        [attr.aria-label]="announcement.urgent ? 'הודעה דחופה' : 'הודעה'"
-        tabindex="0"
-      >
-        <div *ngIf="announcement.urgent" class="announcement-card__badge" role="status" aria-label="הודעה דחופה">
-          דחופה
-        </div>
+      @for (announcement of announcements; track trackByAnnouncement($index, announcement)) {
+        <li
+          class="announcement-card"
+          [class.announcement-card--urgent]="announcement.urgent"
+          [attr.aria-label]="announcement.urgent ? 'הודעה דחופה' : 'הודעה'"
+          tabindex="0"
+        >
+          @if (announcement.urgent) {
+            <div class="announcement-card__badge" role="status" aria-label="הודעה דחופה">
+              דחופה
+            </div>
+          }
 
-        <div class="announcement-card__content">
-          <h3 class="announcement-card__title">{{ announcement.title || 'הודעה' }}</h3>
-          <p class="announcement-card__message">{{ announcement.message }}</p>
-        </div>
-      </li>
+          <div class="announcement-card__content">
+            <h3 class="announcement-card__title">{{ announcement.title || 'הודעה' }}</h3>
+            <p class="announcement-card__message">{{ announcement.message }}</p>
+          </div>
+        </li>
+      }
     </ul>
-  </ng-container>
-
-  <ng-template #emptyState>
+  } @else {
     <p class="empty-state" data-testid="empty-state" aria-live="polite">אין הודעות חדשות</p>
-  </ng-template>
+  }
 </section>

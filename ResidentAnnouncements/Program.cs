@@ -1,10 +1,14 @@
-using ResidentAnnouncements.Application.Interfaces;
-using ResidentAnnouncements.Application.Services;
-using ResidentAnnouncements.Infrastructure.Repositories;
+using RA_MuniAnnouncements.Application.Interfaces;
+using RA_MuniAnnouncements.Application.Services;
+using RA_MuniAnnouncements.Infrastructure.Repositories;
+using RA_MuniAnnouncements.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configure logging first
+builder.AddApplicationLogging();
+
+// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAnnouncementService, AnnouncementService>();
 
@@ -16,10 +20,12 @@ builder.Services.AddSingleton<ISettingsRepository, SettingsRepositoryMock>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var app = builder.Build();
 
-    var app = builder.Build();
+// Configure middleware for exception handling and logging
+app.UseApplicationMiddleware();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -33,8 +39,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

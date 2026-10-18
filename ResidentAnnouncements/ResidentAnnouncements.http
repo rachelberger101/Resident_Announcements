@@ -1,6 +1,6 @@
-@ResidentAnnouncements_HostAddress = http://localhost:5004
+@RA_MuniAnnouncements_HostAddress = http://localhost:5004
 
-GET {{ResidentAnnouncements_HostAddress}}/weatherforecast/
+GET {{RA_MuniAnnouncements_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

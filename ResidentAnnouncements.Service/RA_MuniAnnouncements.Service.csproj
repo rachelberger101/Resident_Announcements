@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.13.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ResidentAnnouncements.Core\RA_MuniAnnouncements.Core.csproj" />
+    <ProjectReference Include="..\ResidentAnnouncements.Infrastructure\RA_MuniAnnouncements.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

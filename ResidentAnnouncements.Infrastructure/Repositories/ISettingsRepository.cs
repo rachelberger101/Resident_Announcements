@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using ResidentAnnouncements.Core.Models;
+using RA_MuniAnnouncements.Core.Models;
 
-namespace ResidentAnnouncements.Infrastructure.Repositories
+namespace RA_MuniAnnouncements.Infrastructure.Repositories
 {
     public interface ISettingsRepository
     {
